@@ -164,6 +164,20 @@ function renderSubjects(){
             }
             gradeInput.value="";
         });
+
+        //del
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "Delete Subject";
+        delBtn.className="bg-red-600 px-3 py-1 rounded hover:bg-red mt-2";
+        delBtn.addEventListener("click", () => {
+            if(confirm(`Delete ${subj.name}?`)) {
+                delete state.subjects[key];
+                saveState();
+                renderSubjects();
+                renderDashboard();
+            }
+        });
+        
     })
 }
 function renderTests(){}
