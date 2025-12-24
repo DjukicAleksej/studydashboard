@@ -143,6 +143,27 @@ function renderSubjects(){
             });
             gradesList.appendChild(span);
         });
+        //gr inp
+        const gradeInput = document.createElement("input");
+        gradeInput.type = "number";
+        gradeInput.min = 1;
+        gradeInput.max = 5;
+        gradeInput.placeholder = "Grade";
+        gradeInput.className ="bg-gray-700 border border-gray-600 px-2 py-1 rounded mr-2 w-20";
+
+        const addGradeBtn = document.createElement("button");
+        addGradeBtn.textContent = "Add";
+        addGradeBtn.className ="bg-green-600 px-3 py-1 rounded hover:bg-green-500";
+        addGradeBtn.addEventListener("click", () => {
+            const val = parseFLoat(gradeInput.value);
+            if(!isNaN(val) && val >= 1 && val <= 5){
+                subj.grades.push(val);
+                saveState();
+                renderSubjects();
+                renderDashboard();
+            }
+            gradeInput.value="";
+        });
     })
 }
 function renderTests(){}
