@@ -127,7 +127,22 @@ function renderSubjects(){
         avgText.textContent = `Average: ${isNan(avg) ? "-" : avg}`;
         avgText.className="mb-2 text-gray-300";
 
-        
+        //Grades list
+        const gradesList = document.createElement("div");
+        gradesList.className="flex gap-2 flex-wrap mb-2";
+        subj.grades.forEach((g,i) => {
+            const span = document.createElement("span");
+            span.textContent = g;
+            span.className = "bg-blue-600 px-2 py-1 rounded cursor-pointer hover:bg-red-600";
+            //Click to remove grade
+            span.addEventListener("click", () => {
+                subj.grades.splice(i,1);
+                saveState();
+                renderSubjects();
+                renderDashboard();
+            });
+            gradesList.appendChild(span);
+        });
     })
 }
 function renderTests(){}
