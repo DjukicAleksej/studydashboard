@@ -188,6 +188,11 @@ function renderSubjects(){
         subjectsContainer.appendChild(card);
     });
 }
+const testSubject = document.getElementById("testSubject");
+const testTitle = document.getElementById("testTitle");
+const testDate = document.getElementById("testDate");
+const addTestBtn = document.getElementById("addTestBtn");
+const testsList = document.getElementById("testsList");
 
 function renderTests(){}
 function renderNotes(){}
