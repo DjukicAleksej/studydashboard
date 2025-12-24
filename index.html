@@ -21,10 +21,10 @@
             <h1 class="text-xl font-semibold tracking-wide">📚 Study Dashboard</h1>
 
             <nav class="flex gap-2">
-                <button data-tab="dashboard" class="tab-btn">Dashboard</button>
-                <button data-tab="grades" class="tab-btn">Grades</button>
-                <button data-tab="tests" class="tab-btn">Tests</button>
-                <button data-tab="notes" class="tab-btn">Notes</button>
+                <button data-tab="dashboard" class="px-4 py-2 rounded-lg text-sm bg-gray-800 hover:bg-gray-700 transition">Dashboard</button>
+                <button data-tab="grades" class="px-4 py-2 rounded-lg text-sm bg-gray-800 hover:bg-gray-700 transition">Grades</button>
+                <button data-tab="tests" class="px-4 py-2 rounded-lg text-sm bg-gray-800 hover:bg-gray-700 transition">Tests</button>
+                <button data-tab="notes" class="px-4 py-2 rounded-lg text-sm bg-gray-800 hover:bg-gray-700 transition">Notes</button>
             </nav>
         </div>
     </header>
@@ -32,32 +32,32 @@
 
     <main class="max-w-6xl mx-auto px-6 py-8 space-y-10">
      <section id="dashboard" class="tab-section">
-        <h2 class="section-title">Overview</h2>
+        <h2 class="text-2xl font-semibold mb-6">Overview</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="card">
-                <p class="card-label">Overall Average</p>
-                <p class="card-value" id="overallAverage">-</p>
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                <p class="text-sm text-gray-400">Overall Average</p>
+                <p class="text-3xl font-bold mt-2" id="overallAverage">-</p>
             </div>
 
-            <div class="card">
-                <p class="card-label">Upcoming Tests</p>
-                <p class="card-value" id="upcomingTests">0</p>
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                <p class="text-sm text-gray-400">Upcoming Tests</p>
+                <p class="text-3xl font-bold mt-2" id="upcomingTests">0</p>
             </div>
 
-            <div class="card">
-                <p class="card-label">Today</p>
-                <p class="card-value" id="todayDate">-</p>
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                <p class="text-sm text-gray-400">Today</p>
+                <p class="text-3xl font-bold mt-2" id="todayDate">-</p>
             </div>
         </div>
      </section>
 
      <section id="grades" class="tab-section hidden">
-        <h2 class="section-title">Grades</h2>
+        <h2 class="text-2xl font-semibold mb-6">Grades</h2>
 
         <div class="flex gap-4 mb-4">
-            <input id="subjectInput" type="text" placeholder="New subject" class="input" />
-            <button id="addSubjectBtn" class="btn-primary">Add</button>
+            <input id="subjectInput" type="text" placeholder="New subject" class="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 w-full focus:outline-none" />
+            <button id="addSubjectBtn" class="bg-blue-600 hover:bg-blue-400 px-4 py-2 rounded-lg transition">Add</button>
         </div>
 
         <div id="subjectsContainer" class="space-y-4">
@@ -66,13 +66,13 @@
      </section>
 
      <section id="tests" class="tab-section hidden">
-        <h2 class="section-title">Tests & Deadlines</h2>
+        <h2 class="text-2xl font-semibold mb-6">Tests & Deadlines</h2>
 
         <div clas="grid md:grid-cols-4 gap-4 mb-4">
-            <input type="text" id="testSubject" placeholder="Subject" class="input" />
+            <input type="text" id="testSubject" placeholder="Subject" class="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 w-full focus:outline-none" />
             <input type="date" id="testDate" class="input" />
-            <input type="text" id="testNote" placeholder="Description" class="input" />
-            <button id="addTestBtn" class="btn-primary">Add Test</button>
+            <input type="text" id="testNote" placeholder="Description" class="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 w-full focus:outline-none" />
+            <button id="addTestBtn" class="bg-blue-600 hover:bg-blue-400 px-4 py-2 rounded-lg transition">Add Test</button>
         </div>
 
         <div id="testList" class="space-y-3">
@@ -81,10 +81,10 @@
      </section>
 
      <section id="notes" class="tab-section hidden">
-        <h2 class="section-title">Daily Notes</h2>
+        <h2 class="text-2xl font-semibold mb-6">Daily Notes</h2>
             <div class="flex gap-4 mb-4">
-                <input type="date" id="noteDate" class="input" />
-                <button id="todayBtn" class="btn-secondary">Today</button>
+                <input type="date" id="noteDate" class="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 w-full focus:outline-none" />
+                <button id="todayBtn" class=" bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg transition">Today</button>
             </div> 
             <textarea id="noteText"
             placeholder="Write your notes here..."
@@ -92,26 +92,5 @@
      </section>
 
     </main>
-
-    <style>
-        .tab-btn{
-            @apply px-4 py-2 rounded-lg text-sm bg-gray-800 hover:bg-gray-700 transition;
-        }
-        .section-title {
-            @apply text-2xl font-semibold mb-6;
-        }
-        .card {
-            @apply bg-gray-800 rounded-xl p-6 border border-gray-700;
-        }
-        .card-label {
-            @apply text-sm text-gray-400;
-        }
-        .card-value {
-            @apply text-3xl font-bold mt-2;
-        }
-        .input {
-            @apply bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 w-full focus:outline-none;
-        }
-    </style>
 </body>
 </html>
