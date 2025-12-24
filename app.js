@@ -1,3 +1,6 @@
+const STORAGE_KEY = "study-dashboard-data";
+
+
 let state = {
     subjects:{},
     tests: [],
@@ -22,4 +25,26 @@ function setupTabs() {
             buttons.forEach(b => b.classList.remove("bg-gray-700"));
         });
     });
+}
+
+
+function saveState(){
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+}
+function loadState(){
+    const data = localStorage.getItem(STORAGE_KEY);
+    if (data) state = JSON.parse(data);
+}
+
+/*****************
+ * Dashboard
+ *****************/
+
+
+function setToday(){
+    const el = document.getElementById("todayDate");
+    if(!el) return;
+
+    const today = new Date().toLocaleDateString();
+    el.textContent = today
 }
