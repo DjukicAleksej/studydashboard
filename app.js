@@ -7,6 +7,17 @@ let state = {
     notes: {}
 };
 
+function daysUntil(dateStr){
+    const today = new Date();
+    const target = new Date(dateStr);
+    
+    today.setHours(0,0,0,0);
+    target.setHours(0,0,0,0);
+
+
+    return Math.ceil((target-today) / (1000* 60 * 60 * 24));
+}
+
 
 
 
@@ -222,11 +233,32 @@ function renderTests(){
     );
 
     sorted.forEach(test => {
-        const isPast = new Date(test.date) < new Date();
+        const daysLeft = daysUntil(test.date);
+        const isPast = daysLeft < 0;
+        const isUrgent = daysLeft >= 0 && daysLeft <= 7;
+       
 
         const card = document.createElement("div");
-        card.className ="bg-gray-800 border border-gray-700 rounded-lg p-4 flex justify-between items-center";
+        card.className =`
+  bg-gray-800 border rounded-lg p-4 flex justify-between items-center transition
+  ${isUrgent ? "border-red-500 bg-red-950/30" : "border-gray-700"}
+`;
         const info = document.createElement("div");
+        const badge = document.createElement("span");
+
+        if(isPast){
+            badge.textContent = "Passed";
+            badge.className ="text-xs text-gray-400";
+        } else if(isUrgent){
+            badge.textContent = `URGENT • ${daysLeft} day${daysLeft === 1 ? "" : "s"} left`;
+            badge.className=
+            "text-xs font-semibold text-red-400 bg-red-900/40 px-2 py-1 rounded";
+        } else {
+            badge.textContent = `${daysLeft} days left`;
+            badge.className =
+            "text-xs text-green-400 bg-green-900/30 px-2 py-1 rounded";
+        }
+        info.appendChild(badge);
 
         const title = document.createElement("p");
         title.className = "font-semibold";
