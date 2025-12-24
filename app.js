@@ -83,10 +83,14 @@ function average(arr){
     if(!arr || arr.length===0) return NaN;
     return arr.reduce((a,b) => a+b,0)/arr.length;
 }
-
-/***************
- * PLACEHOLDRS
+/*************
+ * Grades Logic
  */
+const subjectInput = document.getElementById("subjectInput");
+const addSubjectBtn = document.getElementById("addSubjectBtn");
+const subjectsContainer = document.getElementById("subjectContainer");
+
+
 function renderSubjects(){}
 function renderTests(){}
 function renderNotes(){}
