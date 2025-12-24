@@ -89,7 +89,22 @@ function average(arr){
 const subjectInput = document.getElementById("subjectInput");
 const addSubjectBtn = document.getElementById("addSubjectBtn");
 const subjectsContainer = document.getElementById("subjectContainer");
+//Add subjects
+addSubjectBtn.addEventListener("click", () => {
+    const name = subjectInput.value.trim();
+    if(!name) return;
+    const key = name.toLowerCase().replace(/\s+/g,"-");
+    if(state.subjects[key]){
+        alert("Subject already exists!");
+        return;
+    }
 
+    state.subjects[key] = {name,grades: []};
+    saveState();
+    renderSubjects();
+    renderDashboard();
+    subjectInput.value = "";
+});
 
 function renderSubjects(){}
 function renderTests(){}
