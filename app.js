@@ -113,6 +113,14 @@ function renderSubjects(){
         const subj = state.subjects[key];
 
         //create card
+        const card = document.createElement("div");
+        card.className = "bg-gray-800 p-4 rounded-lg border border-gray-700";
+
+        const title = document.createElement("h3");
+        title.textContent = subj.name;
+        title.className = "text-lg font-semibold mb-2";
+
+        //avg
     })
 }
 function renderTests(){}
