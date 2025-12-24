@@ -311,6 +311,16 @@ if(todayBtn){
         loadNote(); //bilj za dat
     });
 }
+if(noteText){
+    noteText.addEventListener("input",() => {
+        const date = noteDate.value;
+        if(!date) return;
+        state.notes[date] = noteText.value;
+        saveState();
+        renderNotes();
+    });
+}
+
 
 function renderNotes(){}
 
