@@ -212,7 +212,25 @@ if (addTestBtn) {
         testDate.value = "";
     });
 }
-function renderTests(){}
+function renderTests(){
+    if(!testsList) return;
+
+    testsList.innerHTML ="";
+
+    const sorted = [...state.tests].sort(
+        (a,b) => new Date(a.date) - new Date(b.date)
+    );
+
+    sorted.forEach(test => {
+        const isPast = new Date(test.date) < new Date();
+
+        const card = document.createElement("div");
+        card.className ="bg-gray-800 border border-gray-700 rounded-lg p-4 flex justify-between items-center";
+        const info = document.createElement("div");
+
+        const title = document.createElement("p");
+    })
+}
 function renderNotes(){}
 
 document.addEventListener("DOMContentLoaded", () => {
