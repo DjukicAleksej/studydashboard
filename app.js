@@ -80,9 +80,10 @@ function renderDashboard(){
     const overall = avgs.length
     ? (avgs.reduce((a,b) => a+b,0)/avgs.length).toFixed(2):"-";
     avgEl.textContent = overall;
-    const upcoming = state.tests.filter(t=> 
-        new Date(t.date) >= new Date()
-    );
+    const upcoming = state.tests.filter(t=>{
+        const d = daysUntil(t.date);
+        return d >= 0 && d <= 7;
+});
 
     testsEl.textContent = upcoming.length;
 }
