@@ -62,7 +62,7 @@ function renderDashboard(){
 
     if(!avgEl || !testsEl) return;
 
-    const avgs = Objects.values(state.subjects)
+    const avgs = Object.values(state.subjects)
     .map(s=> average(s.grades))
     .filter(v => !isNaN(v))
 
@@ -88,7 +88,7 @@ function average(arr){
  */
 const subjectInput = document.getElementById("subjectInput");
 const addSubjectBtn = document.getElementById("addSubjectBtn");
-const subjectsContainer = document.getElementById("subjectContainer");
+const subjectsContainer = document.getElementById("subjectsContainer");
 //Add subjects
 addSubjectBtn.addEventListener("click", () => {
     const name = subjectInput.value.trim();
@@ -124,7 +124,7 @@ function renderSubjects(){
 
         const avg = average(subj.grades).toFixed(2);
         const avgText = document.createElement("p");
-        avgText.textContent = `Average: ${isNan(avg) ? "-" : avg}`;
+        avgText.textContent = `Average: ${isNaN(avg) ? "-" : avg}`;
         avgText.className="mb-2 text-gray-300";
 
         //Grades list
@@ -155,7 +155,7 @@ function renderSubjects(){
         addGradeBtn.textContent = "Add";
         addGradeBtn.className ="bg-green-600 px-3 py-1 rounded hover:bg-green-500";
         addGradeBtn.addEventListener("click", () => {
-            const val = parseFLoat(gradeInput.value);
+            const val = parseFloat(gradeInput.value);
             if(!isNaN(val) && val >= 1 && val <= 5){
                 subj.grades.push(val);
                 saveState();
@@ -192,3 +192,12 @@ function renderSubjects(){
 function renderTests(){}
 function renderNotes(){}
 
+document.addEventListener("DOMContentLoaded", () => {
+  loadState();
+  setupTabs();
+  setToday();
+  renderAll();
+
+  // default tab
+  document.querySelector('[data-tab="dashboard"]').click();
+});
