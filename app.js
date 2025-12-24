@@ -338,7 +338,7 @@ function renderNotes(){
         div.className = "bg-gray-800 border-gray-700 rounded-lg p-3";
 
         const dateP = document.createElement("p");
-        contentP.className = "text-sm text-gray-400 mb-1";
+        dateP.className = "text-sm text-gray-400 mb-1";
         dateP.textContent = d;
 
         const contentP = document.createElement("p");
