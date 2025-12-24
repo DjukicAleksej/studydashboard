@@ -193,7 +193,25 @@ const testTitle = document.getElementById("testTitle");
 const testDate = document.getElementById("testDate");
 const addTestBtn = document.getElementById("addTestBtn");
 const testsList = document.getElementById("testsList");
+if (addTestBtn) {
+    addTestBtn.addEventListener("click" , () => {
+        if(!testSubject.value || !testTitle.value || !testDate.value) return;
+        state.tests.push({
+            id: Date.now(),
+            subject: testSubject.value.trim(),
+            title: testTitle.value.trim(),
+            date: testDate.value
+        });
 
+        saveState();
+        renderTests();
+        renderDashboard();
+
+        testSubject.value = "";
+        testTitle.value = "";
+        testDate.value = "";
+    });
+}
 function renderTests(){}
 function renderNotes(){}
 
