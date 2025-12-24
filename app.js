@@ -177,9 +177,18 @@ function renderSubjects(){
                 renderDashboard();
             }
         });
-        
-    })
+        //apnd
+        card.appendChild(title);
+        card.appendChild(avgText);
+        card.appendChild(gradesList);
+        card.appendChild(gradeInput);
+        card.appendChild(addGradeBtn);
+        card.appendChild(delBtn);
+
+        subjectsContainer.appendChild(card);
+    });
 }
+
 function renderTests(){}
 function renderNotes(){}
 
