@@ -369,6 +369,14 @@ function renderNotes(){
         <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
         </svg>`;
         delBtn.className = "p-1 rounded hover:bg-gray-700 transition text-red-400 hover:text-red-300";
+        delBtn.addEventListener("click",() => {
+            if(confirm(`Delete note from ${d}`)){
+                delete state.notes[d];
+                saveState();
+                renderNotes();
+                if(noteDate.value ===d) noteText.value = "";
+            }
+        });
         
         notesList.appendChild(div);
     });
