@@ -229,6 +229,14 @@ function renderTests(){
         const info = document.createElement("div");
 
         const title = document.createElement("p");
+        title.className = "font-semibold";
+        title.textContent = `${test.subject} - ${test.title}`;
+
+        const date = document.createElement("p");
+        date.className=`text-sm ${isPast ? "text-rad-400" : "text-green-400"}`;
+        date.textContent = test.date;
+
+        
     })
 }
 function renderNotes(){}
