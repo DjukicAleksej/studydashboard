@@ -337,6 +337,7 @@ function renderNotes(){
         const div = document.createElement("div");
         div.className = "bg-gray-800 border-gray-700 rounded-lg p-3";
 
+        const left = document.createElement("div");
         const dateP = document.createElement("p");
         dateP.className = "text-sm text-gray-400 mb-1";
         dateP.textContent = d;
@@ -345,8 +346,22 @@ function renderNotes(){
         contentP.className = "text-gray-100";
         contentP.textContent = state.notes[d];
 
-        div.appendChild(dateP);
-        div.appendChild(contentP);
+        left.appendChild(dateP);
+        left.appendChild(contentP);
+
+        const right= document.createElement("div");
+        right.className = "flex gap-2";
+        //edit
+        const editBtn = document.createElement("button");
+        editBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+        </svg>`;
+        editBtn.className="p-1 rounded hover:bg-gray-700 transition text-yellow-400 hover:text-yellow-300";
+        editBtn.addEventListener("click",() =>{
+            noteDate.value =d;
+            noteText.value = state.notes[d];
+        });
+        
 
         notesList.appendChild(div);
     });
@@ -356,6 +371,9 @@ function renderNotes(){
 function loadCurrentNote(){
     if(noteDate) loadNote();
 }
+noteDate.addEventListener("change" , () => {
+    loadNote();
+})
 
 document.addEventListener("DOMContentLoaded", () => {
   loadState();
