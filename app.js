@@ -340,7 +340,21 @@ function renderNotes(){
         const dateP = document.createElement("p");
         contentP.className = "text-sm text-gray-400 mb-1";
         dateP.textContent = d;
-    })
+
+        const contentP = document.createElement("p");
+        contentP.className = "text-gray-100";
+        contentP.textContent = state.notes[d];
+
+        div.appendChild(dateP);
+        div.appendChild(contentP);
+
+        notesList.appendChild(div);
+    });
+}
+
+//load note for the actively chosen date
+function loadCurrentNote(){
+    if(noteDate) loadNote();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
