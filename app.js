@@ -121,6 +121,13 @@ function renderSubjects(){
         title.className = "text-lg font-semibold mb-2";
 
         //avg
+
+        const avg = average(subj.grades).toFixed(2);
+        const avgText = document.createElement("p");
+        avgText.textContent = `Average: ${isNan(avg) ? "-" : avg}`;
+        avgText.className="mb-2 text-gray-300";
+
+        
     })
 }
 function renderTests(){}
