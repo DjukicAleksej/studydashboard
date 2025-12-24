@@ -299,6 +299,18 @@ function renderTests(){
 
     });
 }
+const noteDate = document.getElementById("noteDate");
+const noteText = document.getElementById("noteText");
+const todayBtn = document.getElementById("todayBtn");
+const notesList = document.getElementById("notesList");
+
+if(todayBtn){
+    todayBtn.addEventListener("click",() => {
+        const today = new Date().toISOString().split("T")[0];
+        noteDate.value = today;
+        loadNote(); //bilj za dat
+    });
+}
 
 function renderNotes(){}
 
