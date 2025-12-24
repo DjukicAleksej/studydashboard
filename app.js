@@ -320,6 +320,11 @@ if(noteText){
         renderNotes();
     });
 }
+function loadNote(){
+    const date = noteDate.value;
+    if(!date) return;
+    noteText.value = state.notes[date] || "";
+}
 
 
 function renderNotes(){}
