@@ -106,7 +106,15 @@ addSubjectBtn.addEventListener("click", () => {
     subjectInput.value = "";
 });
 
-function renderSubjects(){}
+function renderSubjects(){
+    if(!subjectsContainer) return;
+    subjectsContainer.innerHTML = "";
+    Object.keys(state.subjects).forEach(key => {
+        const subj = state.subjects[key];
+
+        //create card
+    })
+}
 function renderTests(){}
 function renderNotes(){}
 
