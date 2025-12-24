@@ -258,18 +258,19 @@ function renderTests(){
             badge.className =
             "text-xs text-green-400 bg-green-900/30 px-2 py-1 rounded";
         }
-        info.appendChild(badge);
+        
 
         const title = document.createElement("p");
         title.className = "font-semibold";
         title.textContent = `${test.subject} - ${test.title}`;
 
         const date = document.createElement("p");
-        date.className=`text-sm ${isPast ? "text-rad-400" : "text-green-400"}`;
+        date.className=`text-sm ${isPast ? "text-red-400" : "text-green-400"}`;
         date.textContent = test.date;
 
         info.appendChild(title);
         info.appendChild(date);
+        info.appendChild(badge);
 
         const del = document.createElement("button");
         del.innerHTML=`
