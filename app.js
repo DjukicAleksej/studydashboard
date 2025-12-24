@@ -327,7 +327,21 @@ function loadNote(){
 }
 
 
-function renderNotes(){}
+function renderNotes(){
+    if(!notesList) return;
+    notesList.innerHTML="";
+
+    const sortedDates = Object.keys(state.notes).sort((a,b) => new Date(b) - new Date(a));
+
+    sortedDates.forEach(d => {
+        const div = document.createElement("div");
+        div.className = "bg-gray-800 border-gray-700 rounded-lg p-3";
+
+        const dateP = document.createElement("p");
+        contentP.className = "text-sm text-gray-400 mb-1";
+        dateP.textContent = d;
+    })
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   loadState();
